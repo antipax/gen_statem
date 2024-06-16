@@ -18,10 +18,10 @@ defmodule GenStateMachine.Translator do
     opts = Application.get_env(:logger, :translator_inspect_opts)
 
     case message do
-      {'** State machine ~tp terminating~n' ++ _ = format, args} ->
+      {~c"** State machine ~tp terminating~n" ++ _ = format, args} ->
         do_translate(min_level, format, args, opts)
 
-      {'** State machine ~p terminating~n' ++ _ = format, args} ->
+      {~c"** State machine ~p terminating~n" ++ _ = format, args} ->
         do_translate(min_level, format, args, opts)
 
       _ ->
